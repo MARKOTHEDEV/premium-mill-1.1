@@ -58,13 +58,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages',
+    # 'storages',
 
     'main_website.apps.MainWebsiteConfig',
     'django_email_verification',
    
     # third party api
     'rest_framework',
+       'cloudinary_storage',
+      'cloudinary',
 
 ]
 
@@ -162,15 +164,16 @@ LOGIN_REDIRECT_URL = 'signIn'
 LOGIN_URL = 'signIn'
 
 
-# aws access
-AWS_ACCESS_KEY_ID= os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY= os.environ['AWS_SECRET_ACCESS_KEY']
-# premuim-mill aws bucket name
-AWS_STORAGE_BUCKET_NAME='premium-mill-django-app'
-AWS_DEFAULT_ACL = False 
-AWS_S3_FILE_OVERWRITE = False
-# this help premium mill load media files to aws
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ['CLOUD_NAME'],
+    'API_KEY': os.environ['API_KEY'],
+    'API_SECRET':  os.environ['API_SECRET']
+}
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+
+
 
 
 LOGGING = {
@@ -228,7 +231,7 @@ EMAIL_MAIL_HTML = 'mail_body.html'
 EMAIL_MAIL_PLAIN = 'mail_body.txt'
 EMAIL_TOKEN_LIFE = 60 * 60
 EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
-EMAIL_PAGE_DOMAIN = 'https://premiumill.com/'
+EMAIL_PAGE_DOMAIN = 'https://premiumills.com/'
 
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
