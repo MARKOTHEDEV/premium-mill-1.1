@@ -44,7 +44,7 @@ SECRET_KEY = 'c$%w$$4^d%2k592ph5jjpxhw93$y-03h!+w*xin(c(25fwo^y8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['marko-premiummill.herokuapp.com','www.premiumill.com','premiumill.com','premiumills.com','www.premiumills.com']
+ALLOWED_HOSTS = ['lamdon.herokuapp.com','premiumills.com','www.premiumills.com']
 
 
 # Application definition
