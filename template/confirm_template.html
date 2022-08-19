@@ -3187,7 +3187,7 @@ jQuery( document ).ready(function() {
 
 {% if success %}
     {{ user }}, your account is confirmed!
-    <a href="{% url 'dashboard' %}" style="color: gray;">Visit your Dashboard</a>
+    <a href="{% url 'signIn' %}" style="color: gray;">sign in to your Dashboard</a>
 {% else %}
     Error, invalid token!
 {% endif %}
