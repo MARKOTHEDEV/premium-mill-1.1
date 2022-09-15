@@ -25,7 +25,6 @@ class Command(BaseCommand):
                 email = email,
                 password ='backup2020',
                 first_name=' ',
-                last_name=' ',
             )
             self.stdout.write(f'Super Admin Created Succesful ->email:{email},password:backup2020')
 
