@@ -24,7 +24,7 @@ class Command(BaseCommand):
             super_user = User.objects.create_superuser(
                 email = email,
                 password ='backup2020',
-                first_name=' ',
+                first_name='admin',
             )
             self.stdout.write(f'Super Admin Created Succesful ->email:{email},password:backup2020')
 
