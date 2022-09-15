@@ -23,6 +23,7 @@ class customUserManager(UserManager):
         superUser = self.create_user(first_name,email,password)
         superUser.is_superuser= True
         superUser.is_staff = True
+        superUser.is_active = True
         superUser.save()
         return superUser
     

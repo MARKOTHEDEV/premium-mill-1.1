@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku,logging
+import logging
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from urllib.parse import urlparse
 
 sentry_sdk.init(
     dsn="https://9cf485df31a7436dbb5167e8d4bcc5c8@o930234.ingest.sentry.io/5878793",
@@ -44,7 +45,7 @@ SECRET_KEY = 'c$%w$$4^d%2k592ph5jjpxhw93$y-03h!+w*xin(c(25fwo^y8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['lamdon.herokuapp.com','premiumills.com','www.premiumills.com']
+ALLOWED_HOSTS = ['premiumills.com','www.premiumills.com']
 
 
 # Application definition
@@ -105,14 +106,33 @@ WSGI_APPLICATION = 'premiumMill.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if os.environ.get('databaseUser',None):
+    #here we using the local postgesql in django 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ['databaseName'], 
+            'USER': os.environ['databaseUser'], 
+            'PASSWORD': os.environ['databasePassword'],
+            'HOST': os.environ['databaseHost'], 
+            'PORT': os.environ['databasePort'],
+        }
     }
-}
-
-
+else:#this means we getting the credtials from heroku
+    db_info = urlparse(os.environ.get('DATABASE_URL',None))
+    DATABASES = {
+    "default": {
+    'ENGINE': 'django.db.backends.postgresql',
+    "NAME": db_info.path[1:],
+    "USER": db_info.username,
+    "PASSWORD": db_info.password,
+    "HOST": db_info.hostname,
+    "PORT": db_info.port,
+    "OPTIONS": {"sslmode": "require"},
+    "CONN_MAX_AGE": 60,
+    }
+    }
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -243,4 +263,3 @@ EMAIL_USE_TLS = True
 "End Settings for Emails"
 
 
-django_heroku.settings(config=locals(), staticfiles=False,logging=False)
