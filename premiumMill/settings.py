@@ -43,9 +43,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'c$%w$$4^d%2k592ph5jjpxhw93$y-03h!+w*xin(c(25fwo^y8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['premiumills.com','www.premiumills.com']
+ALLOWED_HOSTS = ['premiumills.com','www.premiumills.com' ,'www.web-production-e7e8.up.railway.app','web-production-e7e8.up.railway.app']
 
 
 # Application definition
