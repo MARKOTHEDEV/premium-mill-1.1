@@ -47,7 +47,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['premiumills.com','www.premiumills.com' ,'www.web-production-e7e8.up.railway.app',
                  'web-production-e7e8.up.railway.app',
-                 'localhost'
+                 'localhost',
+                 'premium-mill-11-production.up.railway.app'
                  ]
 
 
