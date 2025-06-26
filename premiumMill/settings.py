@@ -45,7 +45,7 @@ SECRET_KEY = 'c$%w$$4^d%2k592ph5jjpxhw93$y-03h!+w*xin(c(25fwo^y8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['premiumills.com','www.premiumills.com' ,'www.web-production-e7e8.up.railway.app','web-production-e7e8.up.railway.app']
+ALLOWED_HOSTS = ['premiumills.com','www.premiumills.com' ,'www.web-production-e7e8.up.railway.app','web-production-e7e8.up.railway.app','premiummill-d4d8f86fc202.herokuapp.com']
 
 
 # Application definition
